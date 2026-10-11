@@ -52,7 +52,7 @@ The result maps to a level:
 
 For multi-hour activities it uses the **worst hour**, then searches every start time in the activity's window for the lowest peak, breaking ties by staying closest to the original time.
 
-> ⚠️ **Honest note:** these thresholds are a simplified, demo-grade approximation inspired by heat-index categories. They are **not medical advice** and haven't been clinically validated. All the numbers live in a few dictionaries at the top of `app.py` so they're easy to tune.
+
 
 ---
 
