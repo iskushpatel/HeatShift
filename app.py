@@ -308,8 +308,11 @@ else:
         "Hydration": r["hydration"], "Why": r["why"],
     } for r in recs])
     colours = [LEVELS[level_of(r["after"])][3] for r in recs]
-    st.dataframe(out.style.apply(lambda row: [f"background-color: {colours[row.name]}"] * len(row), axis=1),
-                 use_container_width=True, hide_index=True)
+    try:
+        styled = out.style.apply(lambda row: [f"background-color: {colours[row.name]}"] * len(row), axis=1)
+    except Exception:  
+        styled = out
+    st.dataframe(styled, use_container_width=True, hide_index=True)
 
     if use_ai and st.session_state.get("ai_error"):
         st.warning("Bedrock isn't answering yet, so the built-in explanations are shown. "
